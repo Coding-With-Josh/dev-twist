@@ -39,8 +39,12 @@ export function SupabaseAuthProvider({ children }: { children: ReactNode }) {
   try {
     const { data: auth } = await supabase.auth.signUp({ email, password });
     setUser(auth.user);
+    redirect('/dashboard');
+
   } catch (error) {
     // Handle sign-up errors
+    alert("error occured");
+
     console.error(error);
   }
 };
