@@ -17,9 +17,17 @@
 'use client';
 
 import { Navbar } from '@/components/reusable/navbar';
+import {
+  FollowingPointerDemo,
+  TitleComponent,
+} from '@/components/reusable/pointer';
 import ShimmerBtn from '@/components/reusable/shimmer-btn';
 import { Hero } from '@/components/sections/hero';
 import { Button } from '@/components/ui/button';
+import {
+  FollowerPointerCard,
+  FollowPointer,
+} from '@/components/ui/following-pointer';
 import { Spotlight } from '@/components/ui/spotlight';
 import { TextHoverEffect } from '@/components/ui/text-hover-effect';
 import {
@@ -30,7 +38,7 @@ import { LogIn } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function Gradient() {
+export default function Home() {
   const [isHovering, setIsHovering] = useState(false);
   const words = [
     {
@@ -45,10 +53,20 @@ export default function Gradient() {
   ];
 
   return (
-    <div className="px-4 flex items-center flex-col relative w-full h-screen bg-black">
+    <>
       <Navbar />
-      <Hero />
-      <ShimmerBtn/>
-    </div>
+      <FollowerPointerCard
+        title={
+          <TitleComponent
+            title="You"
+            avatar={require('@/assets/images/profile.jpg')}
+          />
+        }
+      >
+        <div className="px-4 flex items-center flex-col relative w-full h-screen bg-black">
+          <Hero />
+        </div>
+      </FollowerPointerCard>
+    </>
   );
 }

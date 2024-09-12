@@ -67,20 +67,20 @@ import {
   TooltipTrigger,
   TooltipProvider,
 } from '@/components/ui/tooltip';
-import { ModeToggle } from '@/components/ui/theme-toggler';
+import { ModeToggle, ModeToggleText } from '@/components/ui/theme-toggler';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 
 export const description =
   'A product edit page. The product edit page has a form to edit the product details, stock, product category, product status, and product images. The product edit page has a sidebar navigation and a main content area. The main content area has a form to edit the product details, stock, product category, product status, and product images. The sidebar navigation has links to product details, stock, product category, product status, and product images.';
 
-const Dashboard =  async () => {
-  const supabase = createClient()
+const Dashboard = async () => {
+  // const supabase = createClient()
 
-  const { data, error } = await supabase.auth.getUser()
-  if (error || !data?.user) {
-    redirect('/login')
-  }
+  // const { data, error } = await supabase.auth.getUser()
+  // if (error || !data?.user) {
+  //   redirect('/login')
+  // }
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -185,10 +185,10 @@ const Dashboard =  async () => {
               <TooltipContent side="right">Settings</TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <ModeToggle/>
+          <ModeToggle />
         </nav>
       </aside>
-       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
         <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
           <Sheet>
             <SheetTrigger asChild>
@@ -241,6 +241,7 @@ const Dashboard =  async () => {
                   <LineChart className="h-5 w-5" />
                   Settings
                 </Link>
+                <ModeToggleText />
               </nav>
             </SheetContent>
           </Sheet>
@@ -627,7 +628,7 @@ const Dashboard =  async () => {
             </div>
           </div>
         </main>
-      </div> 
+      </div>
     </div>
   );
 };

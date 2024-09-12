@@ -53,21 +53,21 @@ const blogContent = {
   authorAvatar: "/manu.png",
 };
 
-const TitleComponent = ({
+export const TitleComponent = ({
   title,
   avatar,
 }: {
   title: string;
   avatar: string;
 }) => (
-  <div className="flex space-x-2 items-center">
-    <Image
+  <div className="flex space-x-2 items-center px-2">
+    {/* <Image
       src={avatar}
       height="20"
       width="20"
       alt="thumbnail"
       className="rounded-full border-2 border-white"
-    />
+    /> */}
     <p>{title}</p>
   </div>
 );
