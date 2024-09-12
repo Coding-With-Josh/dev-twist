@@ -1,6 +1,7 @@
-"use client"
+'use client';
 
-import { Button } from '@/components/ui/button'
+import { signUpAction } from '@/actions/auth/sign-up';
+import { Button } from '@/components/ui/button';
 // import Link from "next/link"
 
 // import { Button } from "@/components/ui/button"
@@ -66,23 +67,41 @@ import { Button } from '@/components/ui/button'
 
 // export default LoginForm
 
-import { Input } from '@/components/ui/input'
-import { SupabaseAuthContext } from '@/providers/SupabaseAuthProvider'
-import React, { useContext, useState } from 'react'
+import { Input } from '@/components/ui/input';
+import { SupabaseAuthContext } from '@/providers/SupabaseAuthProvider';
+import React, { useContext, useState } from 'react';
+import { useFormStatus } from 'react-dom';
 
 const SignUpPage = () => {
-  const context = useContext(SupabaseAuthContext);
-  if (!context) {
-    throw new Error('SupabaseAuthContext is not provided');
-  }
-  const { signup } = context;  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { pending } = useFormStatus();
   return (
     <form>
-      <Input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <Input type='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className='mt-2' />
-      <Button onClick={() => signup(email, password)}>SignUp</Button>    </form>
-  )
-}
+      <Input
+        type="email"
+        placeholder="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <Input
+        type="password"
+        placeholder="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="mt-2"
+      />
+      <Button
+        onClick={(e) => {
+          console.log('Calling signUpAction...');
+          signUpAction(email, password);
+          console.log('signUpAction called.');
+        }}
+      >
+        Sign up
+      </Button>
+    </form>
+  );
+};
 
-export default SignUpPage
+export default SignUpPage;

@@ -1,16 +1,23 @@
-import { supabase } from "@/utils/supabase/client";
+// import { supabase } from "@/utils/supabase/client";
+// import { redirect } from "next/navigation";
 
-type FormData = {
-  email: string
-  password: string
-}
+// type formProps = {
+//   email: string;
+//   password: string;
+// };
 
-async function signUpNewUser({ email, password }: FormData) {
-  const { data, error } = await supabase.auth.signUp({
-    email: email,
-    password: password,
-    options: {
-      emailRedirectTo: 'https://example.com/welcome',
-    },
-  })
-}
+// export async function signUpAction(email: string, password: string) {
+//   try {
+//     const { data, error } = await supabase.auth.signUp({
+//       email: email,
+//       password: password,
+//     });
+//     if (error) {
+//       console.log(error); // Handle error
+//     } else {
+//       // Handle success
+//     }
+//   } catch (error) {
+//     console.log(error); // Handle error
+//   }
+// }

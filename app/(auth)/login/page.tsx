@@ -1,21 +1,40 @@
-"use client"
+'use client';
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { SupabaseAuthContext } from '@/providers/SupabaseAuthProvider'
-import React, { useContext, useState } from 'react'
+import { login, signup } from '@/actions/auth/login';
+import { useState } from 'react';
+import { useFormStatus } from 'react-dom';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const {signIn} = useContext(SupabaseAuthContext)
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { pending } = useFormStatus();
   return (
     <form>
-      <Input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <Input type='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className='mt-2' />
-      <Button onClick={signIn}>Login</Button>
+      <label htmlFor="email">Email:</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <label htmlFor="password">Password:</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        required
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={(e) => login({ email, password }) 
+    }>
+        {pending ? 'Logging in...' : 'Log in'}
+      </button>
+      <button onClick={(e) => signup({ email, password })}>
+        {pending ? 'Signing up...' : 'Sign up'}
+      </button>
     </form>
-  )
+  );
 }
-
-export default LoginPage
