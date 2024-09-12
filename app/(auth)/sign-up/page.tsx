@@ -71,15 +71,17 @@ import { SupabaseAuthContext } from '@/providers/SupabaseAuthProvider'
 import React, { useContext, useState } from 'react'
 
 const SignUpPage = () => {
-  const {signUp} = useContext(SupabaseAuthContext)
-  const [email, setEmail] = useState("")
+  const context = useContext(SupabaseAuthContext);
+  if (!context) {
+    throw new Error('SupabaseAuthContext is not provided');
+  }
+  const { signup } = context;  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   return (
     <form>
       <Input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <Input type='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className='mt-2' />
-      <Button onClick={signUp}>SignUp</Button>
-    </form>
+      <Button onClick={() => signup(email, password)}>SignUp</Button>    </form>
   )
 }
 
