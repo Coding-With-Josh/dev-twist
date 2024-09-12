@@ -27,8 +27,10 @@ export default function RootLayout({
         enableSystem
         disableTransitionOnChange
       >
-          {' '}
-          <body className={poppins.className}>{children}</body>
+        {' '}
+        <body suppressHydrationWarning className={poppins.className}>
+          {children}
+        </body>
       </ThemeProvider>
     </html>
   );

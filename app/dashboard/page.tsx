@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -69,12 +71,13 @@ import {
 } from '@/components/ui/tooltip';
 import { ModeToggle, ModeToggleText } from '@/components/ui/theme-toggler';
 import { createClient } from '@/utils/supabase/server';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 
 export const description =
   'A product edit page. The product edit page has a form to edit the product details, stock, product category, product status, and product images. The product edit page has a sidebar navigation and a main content area. The main content area has a form to edit the product details, stock, product category, product status, and product images. The sidebar navigation has links to product details, stock, product category, product status, and product images.';
 
 const Dashboard = async () => {
+  const router = useRouter() 
   // const supabase = createClient()
 
   // const { data, error } = await supabase.auth.getUser()
@@ -294,7 +297,9 @@ const Dashboard = async () => {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/')}>
+                Logout
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
