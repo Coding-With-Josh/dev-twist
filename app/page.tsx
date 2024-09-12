@@ -11,45 +11,44 @@
 //       <SplineScene/>
 //       <Button onClick={redirect('/sign-up')}>SignUp</Button>
 //     </div>
-    
+
 //   );
 // }
-"use client";
+'use client';
 
-
-
-
-import { FloatingDockDemo } from '@/components/reusable/floating-dock-demo';
+import { Navbar } from '@/components/reusable/navbar';
+import ShimmerBtn from '@/components/reusable/shimmer-btn';
+import { Hero } from '@/components/sections/hero';
 import { Button } from '@/components/ui/button';
 import { Spotlight } from '@/components/ui/spotlight';
+import { TextHoverEffect } from '@/components/ui/text-hover-effect';
+import {
+  TypewriterEffect,
+  TypewriterEffectSmooth,
+} from '@/components/ui/typewriter-effect';
 import { LogIn } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Gradient() {
   const [isHovering, setIsHovering] = useState(false);
+  const words = [
+    {
+      text: 'Developer',
+    },
+    {
+      text: 'Stress',
+    },
+    {
+      text: 'no more',
+    },
+  ];
 
   return (
-    <div
-      className="px-4 flex items-center flex-col relative w-full h-screen bg-gradient-to-br from-black to-gray-800 transition-all duration-500"
-      
-    >
-       <Spotlight
-        className=""
-        fill="white"
-      />
-      <h1 className="mt-40 mb-8 text-[3.2rem] bg-gradient-to-r from-black via-white to-gray text-center inline-block text-transparent bg-clip-text hover:text-white/20 hover:font-thin">A WHOLE NEW WORLD OF AI
-        <br/>WITH TWIST
-      </h1>
-      <Button>
-        <Link href="/sign-up">Get Started</Link>
-      </Button>
-      <Button variant={'secondary'} className='mt-10 flex items-center justify-center space-x-2'>
-        <Link href="/login">Login</Link>
-        <LogIn size={15}/>
-      </Button>
-      <FloatingDockDemo/>
-
+    <div className="px-4 flex items-center flex-col relative w-full h-screen bg-black">
+      <Navbar />
+      <Hero />
+      <ShimmerBtn/>
     </div>
   );
 }

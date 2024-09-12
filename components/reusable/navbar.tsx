@@ -12,12 +12,12 @@ import {
 import Image from "next/image";
 import { ModeToggle, ThemeToggleIcon } from "../ui/theme-toggler";
  
-export function FloatingDockDemo() {
+export function Navbar() {
   const links = [
     {
       title: "Home",
       icon: (
-        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconHome className="h-full w-fulltext-neutral-300" />
       ),
       href: "#",
     },
@@ -25,14 +25,14 @@ export function FloatingDockDemo() {
     {
       title: "Products",
       icon: (
-        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconTerminal2 className="h-full w-fulltext-neutral-300" />
       ),
       href: "#",
     },
     {
       title: "Libaries",
       icon: (
-        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconNewSection className="h-full w-fulltext-neutral-300" />
       ),
       href: "#",
     },
@@ -40,7 +40,7 @@ export function FloatingDockDemo() {
     {
       title: "Changelog",
       icon: (
-        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconExchange className="h-full w-fulltext-neutral-300" />
       ),
       href: "#",
     },
@@ -48,14 +48,14 @@ export function FloatingDockDemo() {
     {
       title: "Twitter",
       icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconBrandX className="h-full w-fulltext-neutral-300" />
       ),
       href: "#",
     },
     {
       title: "GitHub",
       icon: (
-        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconBrandGithub className="h-full w-fulltext-neutral-300" />
       ),
       href: "#",
     },
