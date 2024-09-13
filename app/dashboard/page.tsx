@@ -73,9 +73,6 @@ import { ModeToggle, ModeToggleText } from '@/components/ui/theme-toggler';
 import { createClient } from '@/utils/supabase/server';
 import { redirect, useRouter } from 'next/navigation';
 
-export const description =
-  'A product edit page. The product edit page has a form to edit the product details, stock, product category, product status, and product images. The product edit page has a sidebar navigation and a main content area. The main content area has a form to edit the product details, stock, product category, product status, and product images. The sidebar navigation has links to product details, stock, product category, product status, and product images.';
-
 const Dashboard = async () => {
   const router = useRouter() 
   // const supabase = createClient()
