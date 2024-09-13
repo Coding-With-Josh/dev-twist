@@ -73,7 +73,7 @@ import { ModeToggle, ModeToggleText } from '@/components/ui/theme-toggler';
 import { createClient } from '@/utils/supabase/server';
 import { redirect, useRouter } from 'next/navigation';
 
-const Dashboard = async () => {
+const Dashboard = () => {
   const router = useRouter() 
   // const supabase = createClient()
 

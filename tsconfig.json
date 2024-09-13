@@ -1,5 +1,4 @@
 {
-  "ignoreBuildErrors": true,
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
