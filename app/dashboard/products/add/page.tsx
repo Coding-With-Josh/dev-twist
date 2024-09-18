@@ -26,20 +26,28 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useRouter } from 'next/navigation';
 import Sidebar from '@/components/dashboard/blocks/sidebar';
 import Navbar from '@/components/dashboard/blocks/navbar';
-import AddSomething from '@/components/dashboard/blocks/add-something-block';
+import BlockOfContent from '@/components/dashboard/blocks/block-of-content';
+import Test from '@/components/dashboard/content/test';
 
-const Customers = () => {
+const AddProduct = () => {
   const router = useRouter();
+  // const supabase = createClient()
+
+  // const { data, error } = await supabase.auth.getUser()
+  // if (error || !data?.user) {
+  //   redirect('/login')
+  // }
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <Sidebar />
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-        <Navbar />
-        <span className='header font-bold text-3xl p-8'>Customers</span>
-        <AddSomething title='New Customer' content='Add a new customer to your customer list' linkText='Add Customer' linkUrl='/dashboard/customers/add'/>
+        <Navbar/>
+        <span className='header font-bold text-xl md:text-2xl lg:text-2xl xl:text-3xl p-8'>Dashboard</span>
+        <Test/>
       </div>
     </div>
   );
 };
 
-export default Customers;
+export default AddProduct;

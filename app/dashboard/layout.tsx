@@ -1,6 +1,8 @@
+import  "bootstrap/dist/css/bootstrap.min.css"
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import '@/app/globals.css';
+import AddBootstrap from "@/utils/bootstrap/AddBootstrap";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -20,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning className={poppins.className}>
+        <AddBootstrap/>
         {children}
       </body>
     </html>

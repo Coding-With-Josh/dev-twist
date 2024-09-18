@@ -1,107 +1,67 @@
-'use client';
+import Link from 'next/link';
 
-import { signUpAction } from '@/actions/auth/sign-up';
 import { Button } from '@/components/ui/button';
-// import Link from "next/link"
-
-// import { Button } from "@/components/ui/button"
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   CardHeader,
-//   CardTitle,
-// } from "@/components/ui/card"
-// import { Input } from "@/components/ui/input"
-// import { Label } from "@/components/ui/label"
-
-// export const description =
-//   "A login form with email and password. There's an option to login with Google and a link to sign up if you don't have an account."
-
-// const LoginForm = () => {
-//   return (
-//     <Card className="mx-auto max-w-sm">
-//       <CardHeader>
-//         <CardTitle className="text-2xl">Login</CardTitle>
-//         <CardDescription>
-//           Enter your email below to login to your account
-//         </CardDescription>
-//       </CardHeader>
-//       <CardContent>
-//         <div className="grid gap-4">
-//           <div className="grid gap-2">
-//             <Label htmlFor="email">Email</Label>
-//             <Input
-//               id="email"
-//               type="email"
-//               placeholder="m@example.com"
-//               required
-//             />
-//           </div>
-//           <div className="grid gap-2">
-//             <div className="flex items-center">
-//               <Label htmlFor="password">Password</Label>
-//               <Link href="#" className="ml-auto inline-block text-sm underline">
-//                 Forgot your password?
-//               </Link>
-//             </div>
-//             <Input id="password" type="password" required />
-//           </div>
-//           <Button type="submit" className="w-full">
-//             Login
-//           </Button>
-//           <Button variant="outline" className="w-full">
-//             Login with Google
-//           </Button>
-//         </div>
-//         <div className="mt-4 text-center text-sm">
-//           Don&apos;t have an account?{" "}
-//           <Link href="#" className="underline">
-//             Sign up
-//           </Link>
-//         </div>
-//       </CardContent>
-//     </Card>
-//   )
-// }
-
-// export default LoginForm
-
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { SupabaseAuthContext } from '@/providers/SupabaseAuthProvider';
-import React, { useContext, useState } from 'react';
-import { useFormStatus } from 'react-dom';
+import { Label } from '@/components/ui/label';
 
-const SignUpPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { pending } = useFormStatus();
+export default function LoginForm() {
   return (
-    <form>
-      <Input
-        type="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="mt-2"
-      />
-      <Button
-        onClick={(e) => {
-          console.log('Calling signUpAction...');
-          signUpAction(email, password);
-          console.log('signUpAction called.');
-        }}
-      >
-        Sign up
-      </Button>
-    </form>
+    <div className="bg-background flex items-center justify-center h-screen w-screen">
+      <div className="bg-gradient-to-bl from-black to-gray-400" />
+      <Card className="mx-auto max-w-sm">
+        <CardHeader>
+          <CardTitle className="text-xl">Sign Up</CardTitle>
+          <CardDescription>
+            Enter your information to create an account
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="first-name">First name</Label>
+                <Input id="first-name" placeholder="Max" required />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="last-name">Last name</Label>
+                <Input id="last-name" placeholder="Robinson" required />
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" type="password" />
+            </div>
+            <Button type="submit" className="w-full">
+              Create an account
+            </Button>
+            <Button variant="outline" className="w-full">
+              Sign up with GitHub
+            </Button>
+          </div>
+          <div className="mt-4 text-center text-sm">
+            Already have an account?{' '}
+            <Link href="#" className="underline">
+              Sign in
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
-};
-
-export default SignUpPage;
+}

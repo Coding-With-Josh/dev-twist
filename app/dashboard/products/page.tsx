@@ -26,8 +26,10 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useRouter } from 'next/navigation';
 import Sidebar from '@/components/dashboard/blocks/sidebar';
 import Navbar from '@/components/dashboard/blocks/navbar';
+import { useFormStatus } from 'react-dom';
 
-const Dashboard = () => {
+const Products = () => {
+  const {pending} = useFormStatus()
   const router = useRouter();
   // const supabase = createClient()
 
@@ -41,11 +43,15 @@ const Dashboard = () => {
       <Sidebar />
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
         <Navbar />
-        <span className='header font-bold text-3xl p-8'>Products</span>
-
+        <span className="header font-bold text-3xl p-8">Products</span>
+        <Link href="/dashboard/products/add">
+          <Button>
+            {pending ? '' : 'Add Product'}
+          </Button>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Products;
